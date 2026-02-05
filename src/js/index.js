@@ -35,7 +35,19 @@ btnSearch.addEventListener('click', async () => {
                 <p>${data.bio || 'Biografia indisponível'}</p>
 
             </div>
-        </div>`;
+        </div>
+        
+        <div class="profile-counters">
+            <div class="followers">
+                <h4>Seguidores</h4>
+                <p>${data.followers}</p>
+            </div>
+            <div class="following">
+                <h4>Seguindo</h4>
+                <p>${data.following}</p>
+            </div>
+        </div>
+        `;
 
     } catch (error) {
         console.error('Erro ao buscar usuário:', error);
