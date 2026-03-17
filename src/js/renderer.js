@@ -9,7 +9,7 @@ export function renderLoading() {
     `;
 }
 
-export function renderProfile(userData) {
+export function renderProfile(userData, repositories = []) {
     const { avatar_url, name, login, bio, followers, following } = userData;
     
     return `
@@ -29,6 +29,36 @@ export function renderProfile(userData) {
             <div class="following">
                 <h4>🧑‍💻 Seguindo</h4>
                 <span>${following}</span>
+            </div>
+        </div>
+        
+        ${renderRepositorios(repositories)}
+    `;
+}
+
+export function renderRepositorios(repositories) {
+    if (!repositories || repositories.length === 0) {
+        return `<p class="no-repos">Nenhum repositório encontrado</p>`;
+    }
+
+    const reposHTML = repositories.map(repo => `
+        <div class="repo-card">
+            <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer">
+                <h3>${repo.name}</h3>
+            </a>
+            <p class="repo-description">${repo.description || 'Sem descrição'}</p>
+            <div class="repo-info">
+                <span class="repo-language">${repo.language || 'Não especificada'}</span>
+                <span class="repo-stars">⭐ ${repo.stargazers_count}</span>
+            </div>
+        </div>
+    `).join('');
+
+    return `
+        <div class="repositories-section">
+            <h3>📦 10 Últimos Repositórios</h3>
+            <div class="repositories-list">
+                ${reposHTML}
             </div>
         </div>
     `;

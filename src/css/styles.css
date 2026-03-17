@@ -252,4 +252,60 @@ button[disabled], input[disabled] {
 .profile-counters span {
   font-size: 2rem;
   font-weight: bold;
+}.repositories-section {
+    margin-top: 30px;
+}
+
+.repositories-section h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.repositories-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 15px;
+}
+
+.repo-card {
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    transition: box-shadow 0.3s;
+}
+
+.repo-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.repo-card h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.1rem;
+}
+
+.repo-card a {
+    color: #0366d6;
+    text-decoration: none;
+}
+
+.repo-card a:hover {
+    text-decoration: underline;
+}
+
+.repo-description {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.repo-info {
+    display: flex;
+    gap: 15px;
+    font-size: 0.85rem;
+}
+
+.repo-language {
+    background: #f1f8ff;
+    padding: 4px 8px;
+    border-radius: 4px;
 }

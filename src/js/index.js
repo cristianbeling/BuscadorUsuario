@@ -1,5 +1,5 @@
 import { UIManager } from './ui.js';
-import { buscarUsuarioGitHub } from './api.js';
+import { buscarUsuarioGitHub, buscarRepositorios } from './api.js';
 import { renderLoading, renderProfile, renderError, renderEmptySearch } from './renderer.js';
 
 class App {
@@ -28,9 +28,12 @@ class App {
         try {
             // Buscar dados da API
             const userData = await buscarUsuarioGitHub(userName);
+            
+            // Buscar repositórios
+            const repositories = await buscarRepositorios(userName);
 
-            // Renderizar perfil
-            this.ui.renderContent(renderProfile(userData));
+            // Renderizar perfil com repositórios
+            this.ui.renderContent(renderProfile(userData, repositories));
 
         } catch (error) {
             console.error('Erro ao buscar usuário:', error);

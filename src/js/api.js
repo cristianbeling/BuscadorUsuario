@@ -14,3 +14,19 @@ export async function buscarUsuarioGitHub(userName) {
 
     return await response.json();
 }
+
+export async function buscarRepositorios(userName) {
+    if (!userName || typeof userName !== 'string') {
+        throw new Error('Nome de usuário inválido');
+    }
+
+    const response = await fetch(
+        `${BaseURL}/users/${userName.trim()}/repos?sort=updated&order=desc&per_page=10`
+    );
+
+    if (!response.ok) {
+        throw new Error('Erro ao buscar repositórios');
+    }
+
+    return await response.json();
+}
